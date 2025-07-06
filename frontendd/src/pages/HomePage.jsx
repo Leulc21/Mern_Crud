@@ -80,6 +80,14 @@ const HomePage = () => {
                     <p className="text-xs text-base-content/70">
                       Created at: {new Date(note.createdAt).toLocaleString()}
                     </p>
+                    <div className="text-xs text-base-content/70 mt-1">
+                      {note.updatedAt && note.updatedAt !== note.createdAt ? (
+                        <>
+                          Updated at:{" "}
+                          {new Date(note.updatedAt).toLocaleString()}
+                        </>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
 
