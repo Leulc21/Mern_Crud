@@ -30,7 +30,7 @@ const CreatePage = () => {
       navigate("/");
     } catch (error) {
       console.log("Error creating note", error);
-      if (error.response.status === 429) {
+      if (error.response?.status === 429) {
         toast.error("Slow down! You're creating notes too fast", {
           duration: 4000,
           icon: "💀",
@@ -47,12 +47,12 @@ const CreatePage = () => {
     <div className="min-h-screen bg-base-200">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
-          <Link to={"/"} className="btn btn-ghost mb-6">
-            <ArrowLeftIcon className="size-5" />
+          <Link to="/" className="btn btn-ghost mb-6 flex items-center gap-2">
+            <ArrowLeftIcon className="w-5 h-5" />
             Back to Notes
           </Link>
 
-          <div className="card bg-base-100">
+          <div className="card bg-base-100 shadow-md">
             <div className="card-body">
               <h2 className="card-title text-2xl mb-4">Create New Note</h2>
               <form onSubmit={handleSubmit}>
@@ -63,7 +63,7 @@ const CreatePage = () => {
                   <input
                     type="text"
                     placeholder="Note Title"
-                    className="input input-bordered"
+                    className="input input-bordered w-full"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
@@ -75,7 +75,7 @@ const CreatePage = () => {
                   </label>
                   <textarea
                     placeholder="Write your note here..."
-                    className="textarea textarea-bordered h-32"
+                    className="textarea textarea-bordered h-32 w-full resize-y"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
@@ -84,7 +84,7 @@ const CreatePage = () => {
                 <div className="card-actions justify-end">
                   <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary min-w-[130px]"
                     disabled={loading}
                   >
                     {loading ? "Creating..." : "Create Note"}
@@ -98,4 +98,5 @@ const CreatePage = () => {
     </div>
   );
 };
+
 export default CreatePage;
